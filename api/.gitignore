@@ -2,5 +2,9 @@
 /node_modules
 /.vscode
 
+#databases
+/src/database/*sqlite3
+
+
 # misc
 .DS_Store

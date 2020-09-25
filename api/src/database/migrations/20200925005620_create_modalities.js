@@ -1,9 +1,9 @@
 exports.up = function (knex) {
-  return knex.schema.createTable("modalities", function (table) {
-    table.string("type").primary();
+  return knex.schema.createTable('modalities', (table) => {
+    table.string('type').primary();
   });
 };
 
 exports.down = function (knex) {
-  return knex.schema.dropTable("modalities");
+  return knex.schema.dropTable('modalities');
 };

@@ -11,9 +11,9 @@ routes.get('/flags', FlagsController.index);
 routes.get('/modalities', ModalitiesController.index);
 
 routes.get('/users', UserController.index);
-
 routes.post('/users', UserController.create);
 
 routes.get('/transactions', TransactionController.index);
+routes.post('/transactions', TransactionController.create);
 
 module.exports = routes;

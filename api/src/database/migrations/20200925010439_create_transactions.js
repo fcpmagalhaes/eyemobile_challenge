@@ -4,13 +4,15 @@ exports.up = function (knex) {
     table.string("nsu", 7).notNullable();
     table.decimal("value").notNullable();
     table.decimal("net_value").notNullable();
-    table.string("flag").notNullable();
-    table.string("modality").notNullable();
+    table.string("flag_name").notNullable();
+    table.string("modality_type").notNullable();
     table.datetime("date").notNullable();
     table.date("avaliable").notNullable();
     table.integer('user_id').unsigned().notNullable();
 
     table.foreign("user_id").references("id").inTable("user");
+    table.foreign("flag_name").references("name").inTable("flags");
+    table.foreign("modality_type").references("type").inTable("modalities");
   });
 };
 

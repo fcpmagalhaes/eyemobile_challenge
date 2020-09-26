@@ -2,6 +2,7 @@
 const connection = require('../database/connection');
 const calculateNetValue = require('../utils/calculateNetValue');
 const generateAvaliableDay = require('../utils/generateAvaliableDay');
+const validateFields = require('../utils/validateFields');
 
 module.exports = {
   async index(req, res) {
@@ -15,6 +16,11 @@ module.exports = {
     const {
       nsu, value, flag_name, modality_type, date,
     } = req.body;
+
+    const { valid, msg } = await validateFields(nsu, value, flag_name, modality_type);
+    if (!valid) {
+      return res.status(400).json({ message: msg });
+    }
 
     try {
       const net_value = calculateNetValue(modality_type, value);

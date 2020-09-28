@@ -4,6 +4,6 @@ module.exports = {
   async index(req, res) {
     const modalities = await connection('modalities').select('*');
 
-    return res.json(modalities);
+    return res.status(200).json(modalities);
   },
 };

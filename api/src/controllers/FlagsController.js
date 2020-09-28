@@ -4,6 +4,6 @@ module.exports = {
   async index(req, res) {
     const flags = await connection('flags').select('*');
 
-    return res.json(flags);
+    return res.status(200).json(flags);
   },
 };

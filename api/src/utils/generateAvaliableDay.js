@@ -1,12 +1,11 @@
-const { addBusinessDays, formatISO, parseISO } = require('date-fns');
+const { addBusinessDays, formatISO } = require('date-fns');
 
 module.exports = function generateAvaliableDay(modality, date) {
   let avaliableDate;
-  const parsedDate = parseISO(date);
   if (modality === 'credit') {
-    avaliableDate = addBusinessDays(parsedDate, 31);
+    avaliableDate = addBusinessDays(date, 30);
   } else if (modality === 'debit') {
-    avaliableDate = addBusinessDays(parsedDate, 2);
+    avaliableDate = addBusinessDays(date, 1);
   }
   return formatISO(avaliableDate);
 };

@@ -1,4 +1,6 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable camelcase */
+const { format, parseISO } = require('date-fns');
 const connection = require('../database/connection');
 const calculateNetValue = require('../utils/calculateNetValue');
 const generateAvaliableDay = require('../utils/generateAvaliableDay');
@@ -8,6 +10,11 @@ module.exports = {
   async index(req, res) {
     try {
       const transactions = await connection('transactions').select('*');
+      // eslint-disable-next-line array-callback-return
+      transactions.map((transaction) => {
+        const parsedDate = parseISO(transaction.avaliable);
+        transaction.avaliable = format(parsedDate, 'yyyy-mm-dd');
+      });
       return res.status(200).json(transactions);
     } catch (error) {
       return res.status(500).json({ error: 'Error on load transactions' });

@@ -8,11 +8,5 @@
 
 # misc
 .DS_Store
-<<<<<<< HEAD
 /database/db.sqlite3
 .env
-=======
-
-
-.env
->>>>>>> api-development

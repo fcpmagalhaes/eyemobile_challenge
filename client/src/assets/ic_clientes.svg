@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon_Cadastro</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="3.12142851" y="4.05325658" width="8.42472313" height="14.0466057" rx="2.29999995"></rect>
+    </defs>
+    <g id="Dashboard-Checkout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Tela-01-Dashboard-Checkout" transform="translate(-151.000000, -234.000000)">
+            <g id="Group-19" transform="translate(151.000000, 179.000000)">
+                <g id="Group-16" transform="translate(0.000000, 55.000000)">
+                    <g id="Group-15-Copy-4">
+                        <g id="Icon_Cadastro">
+                            <path d="M13.7996317,0 C6.17844387,0 9.19999979e-05,6.17881187 9.19999979e-05,13.7997237 C9.19999979e-05,21.4206356 6.17844387,27.5999994 13.7996317,27.5999994 C21.4208196,27.5999994 27.5999074,21.4210036 27.5999074,13.7997237 C27.5999074,6.17844387 21.4208196,0 13.7996317,0 Z" id="Shape" fill="#737689"></path>
+                            <g id="Group-9" transform="translate(8.050000, 4.600000)">
+                                <rect id="Rectangle-10" fill="#F5F7FA" transform="translate(4.833943, 7.150365) rotate(-353.000000) translate(-4.833943, -7.150365) " x="0.816622204" y="0.452255186" width="8.03464176" height="13.39622" rx="2.29999995"></rect>
+                                <g id="Rectangle-10" transform="translate(7.333790, 11.076559) rotate(-330.000000) translate(-7.333790, -11.076559) ">
+                                    <use fill="#F5F7FA" fill-rule="evenodd" xlink:href="#path-1"></use>
+                                    <rect stroke="#737689" stroke-width="0.703800021" x="2.7695285" y="3.70135657" width="9.12852315" height="14.7504057" rx="2.29999995"></rect>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

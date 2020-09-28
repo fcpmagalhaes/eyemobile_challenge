@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="28px" height="28px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Dashboard-Checkout" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Exemplo---Dashboard---Checkout---Totais" transform="translate(-15.000000, -13.000000)">
+            <g id="Group" transform="translate(15.000000, 13.000000)">
+                <g id="Icon_Cadastro" fill="#737689">
+                    <path d="M13.7996317,0 C6.17844387,0 9.19999979e-05,6.17881187 9.19999979e-05,13.7997237 C9.19999979e-05,21.4206356 6.17844387,27.5999994 13.7996317,27.5999994 C21.4208196,27.5999994 27.5999074,21.4210036 27.5999074,13.7997237 C27.5999074,6.17844387 21.4208196,0 13.7996317,0 Z" id="Shape"></path>
+                </g>
+                <path d="M7,9 L21,9" id="Path-3" stroke="#F5F7FA"></path>
+                <path d="M7,14 L21,14" id="Path-3-Copy" stroke="#F5F7FA"></path>
+                <path d="M7,19 L21,19" id="Path-3-Copy-2" stroke="#F5F7FA"></path>
+            </g>
+        </g>
+    </g>
+</svg>

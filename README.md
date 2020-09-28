@@ -9,12 +9,29 @@ This project contains the following modules:
 
 ### ⚙ API Instalation
 
-As a Express project, the installation is very simple. To run this project locally you just need to install the dependencies and start ✨
+As a Express project, the installation is very simple. To run this project locally you just need to install the dependencies, run the migrations of database and start ✨
 
- We recommend using npm as your package manager. Just run the following lines:
+We recommend using npm as your package manager:
 
 ``` javascript
 npm install
+```
+
+After install all packages we need run the migrations and seeds:
+
+``` javascript
+npx knex migrate:latest
+npx knex seed:run
+```
+
+Create a .env file and set a secret string to be used at JWT auth:
+``` javascript
+SECRET_KEY=some_secret
+```
+
+At last, just is necessary run the application:
+
+``` javascript
 npm start
 ```
 

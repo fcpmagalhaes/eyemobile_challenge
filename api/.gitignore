@@ -2,7 +2,17 @@
 /node_modules
 /.vscode
 
+#databases
+/src/database/*sqlite3
+
+
 # misc
 .DS_Store
+<<<<<<< HEAD
 /database/db.sqlite3
 .env
+=======
+
+
+.env
+>>>>>>> api-development

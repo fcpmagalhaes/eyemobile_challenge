@@ -24,6 +24,11 @@ npx knex migrate:latest
 npx knex seed:run
 ```
 
+Create a .env file and set a secret string to be used at JWT auth:
+``` javascript
+SECRET_KEY=some_secret
+```
+
 At last, just is necessary run the application:
 
 ``` javascript

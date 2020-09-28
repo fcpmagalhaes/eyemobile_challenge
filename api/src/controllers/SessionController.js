@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const connection = require('../database/connection');
+require('dotenv/config');
 
 module.exports = {
   async create(req, res) {
@@ -9,12 +10,16 @@ module.exports = {
       return res.status(401).json({ error: 'Authentication failure' });
     }
     if (user.password === password) {
-      const token = jwt.sign({
-        user_id: user.id,
-        login: user.login,
-      }, 'secret', {
-        expiresIn: '1h',
-      });
+      const token = jwt.sign(
+        {
+          user_id: user.id,
+          login: user.login,
+        },
+        process.env.SECRET_KEY,
+        {
+          expiresIn: '1h',
+        },
+      );
       return res.status(200).json({ message: 'User connected', token });
     }
     return res.status(401).json({ error: 'Authentication failure' });

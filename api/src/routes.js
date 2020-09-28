@@ -4,6 +4,7 @@ const UserController = require('./controllers/UserController');
 const FlagsController = require('./controllers/FlagsController');
 const ModalitiesController = require('./controllers/ModalitiesController');
 const SessionController = require('./controllers/SessionController');
+const BalancerController = require('./controllers/BalancerController');
 const login = require('./middleware/Login');
 const terminalVerify = require('./middleware/TerminalVerify');
 const portalVerify = require('./middleware/PortalVerify');
@@ -17,9 +18,11 @@ routes.get('/modalities', login, terminalVerify, ModalitiesController.index);
 routes.get('/users', login, terminalVerify, UserController.index);
 routes.post('/users', UserController.create);
 
-routes.get('/transactions', login, terminalVerify, TransactionController.index);
-routes.post('/transactions', login, portalVerify, TransactionController.create);
+routes.get('/transactions', login, portalVerify, TransactionController.index);
+routes.post('/transactions', login, terminalVerify, TransactionController.create);
 
 routes.post('/sessions', SessionController.create);
+
+routes.get('/transactions/balancer', login, portalVerify, BalancerController.index);
 
 module.exports = routes;

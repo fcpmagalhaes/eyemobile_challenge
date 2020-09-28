@@ -4,17 +4,25 @@ module.exports = {
   async index(req, res) {
     const users = await connection('users').select('*');
 
-    return res.json(users);
+    return res.status(200).json(users);
   },
 
   async create(req, res) {
     const { login, password } = req.body;
 
-    await connection('users').insert({
-      login, password,
-    });
+    const user = await connection('users').where('login', login).select('id').first();
+    if (user) {
+      return res.status(200).json({ error: 'User already registered' });
+    }
 
-    return res.json({ login, password });
+    try {
+      await connection('users').insert({
+        login, password,
+      });
+      return res.status(200).json({ message: 'User created with success', login });
+    } catch (error) {
+      return res.status(500).json({ error: 'Error on create user' });
+    }
   },
 
 };

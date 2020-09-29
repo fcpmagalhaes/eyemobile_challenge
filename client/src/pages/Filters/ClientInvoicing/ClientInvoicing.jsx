@@ -1,71 +1,72 @@
 import React, { useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import {
-  Container, Header, Section,
-} from '../../../styles';
-import { customers } from '../../Helpers/mock-data';
+import { useSelector, useDispatch } from 'react-redux';
+import 'antd/dist/antd.css';
+import { Table, Input } from 'antd';
+import { SearchOutlined } from '@ant-design/icons';
+import { Row, Col } from 'styled-bootstrap-grid';
+
+import { Container, Header, Section } from '../../../styles';
+import { Creators } from '../../../store/petshop/actions';
 
 export default function ClientInvoicing() {
-  const history = useHistory();
+  const dispatch = useDispatch();
 
-  function formatReportId(value) {
-    const strId = value.toString();
-    return `00000000${strId}`.slice(-8);
-  }
+  useEffect(() => {
+    dispatch(Creators.loadClients());
+  }, []);
+
+  const { data, loading } = useSelector((store) => store.petshop);
 
   const reportTableColumns = [
     {
-      Header: 'ID',
-      accessor: 'id',
+      title: 'ID',
+      dataIndex: 'id',
       key: 'id',
-      disableSortBy: false,
-      Cell: ({ cell: { value } }) => formatReportId(value),
     },
     {
-      Header: 'NOME',
-      accessor: 'name',
+      title: 'NOME',
+      dataIndex: 'name',
       key: 'name',
-      Cell: ({ cell: { value } }) => (value),
     },
     {
-      Header: 'DOCUMENTO',
-      accessor: 'document',
+      title: 'DOCUMENTO',
+      dataIndex: 'document',
       key: 'document',
-      disableSortBy: false,
-      Cell: ({ cell: { value } }) => (value),
     },
     {
-      Header: 'DATA NASCIMENTO',
-      accessor: 'birthdate',
+      title: 'DATA NASCIMENTO',
+      dataIndex: 'birthdate',
       key: 'birthdate',
-      disableSortBy: false,
-      Cell: ({ cell: { value } }) => (value),
     },
     {
-      Header: 'CLIENTE DESDE',
-      accessor: 'customer_since',
+      title: 'CLIENTE DESDE',
+      dataIndex: 'customer_since',
       key: 'customer_since',
-      disableSortBy: false,
-      Cell: ({ cell: { value } }) => (value),
     },
     {
-      Header: 'ÚLTIMA COMPRA',
-      accessor: 'last_purchase',
+      title: 'ÚLTIMA COMPRA',
+      dataIndex: 'last_purchase',
       key: 'last_purchase',
-      disableSortBy: false,
-      Cell: ({ cell: { value } }) => (value),
     },
   ];
+  const onChange = (e) => {
+    console.log(e);
+  };
 
   return (
     <Container>
       <Header>
-        <h1>UPDM Modules</h1>
+        <h1>Filtro por Clientes</h1>
       </Header>
       <Section>
-        <h3>ClientInvoicing</h3>
+        <Row>
+          <Col col={4}>
+            <Input className="inputField" placeholder="Pesquisar Nome" prefix={<SearchOutlined />} onChange={onChange} allowClear style={{ borderRadius: '15px' }} />
+          </Col>
+        </Row>
+        {loading && <h1>Carregando...</h1>}
       </Section>
-      <button type="button" onClick={() => history.push('/faturamento')}>Faturamento</button>
+      <Table columns={reportTableColumns} dataSource={data} size="middle" />
     </Container>
   );
 }

@@ -7,7 +7,7 @@ export default createGlobalStyle`
 
   /* css global */
   body {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Avenir', sans-serif;
   }
 
   /* remove default border blue active */

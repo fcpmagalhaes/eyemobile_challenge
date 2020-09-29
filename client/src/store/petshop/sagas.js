@@ -4,11 +4,13 @@ import { Types } from './actions';
 import { customers } from '../../pages/Helpers/mock-data';
 
 async function apiGet(values) {
-  console.log('values.filterParams', values.filterParams);
+  if (values.filterParams) {
+    return customers.filter((e) => e.name.toUpperCase().indexOf(values.filterParams.filterByText.toUpperCase()) !== -1);
+  }
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(customers);
-    }, 3000);
+    }, 1000);
   });
 }
 

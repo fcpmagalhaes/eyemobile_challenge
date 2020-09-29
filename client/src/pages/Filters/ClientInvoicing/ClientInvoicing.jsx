@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
+import React, {
+  useEffect, useState, useRef, useCallback,
+} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import 'antd/dist/antd.css';
 import { Table, Input } from 'antd';
+import debounce from 'lodash.debounce';
 import { SearchOutlined } from '@ant-design/icons';
 import { Row, Col } from 'styled-bootstrap-grid';
 
@@ -10,12 +13,28 @@ import { Creators } from '../../../store/petshop/actions';
 
 export default function ClientInvoicing() {
   const dispatch = useDispatch();
+  const { data, loading } = useSelector((store) => store.petshop);
+
+  const [filterByText, setFilterByText] = useState(null);
+
+  const debouncedSeach = useRef();
+
+  debouncedSeach.current = (text) => dispatch(
+    Creators.loadClients({ filterByText: text }),
+  );
+
+  const executeDebounce = useCallback(
+    debounce((...args) => debouncedSeach.current(...args), 700),
+    [],
+  );
 
   useEffect(() => {
-    dispatch(Creators.loadClients());
-  }, []);
-
-  const { data, loading } = useSelector((store) => store.petshop);
+    if (filterByText !== null && filterByText !== '') {
+      executeDebounce(filterByText);
+    } else if (filterByText === null || filterByText === '') {
+      dispatch(Creators.loadClients());
+    }
+  }, [filterByText]);
 
   const reportTableColumns = [
     {
@@ -49,9 +68,6 @@ export default function ClientInvoicing() {
       key: 'last_purchase',
     },
   ];
-  const onChange = (e) => {
-    console.log(e);
-  };
 
   return (
     <Container>
@@ -61,12 +77,22 @@ export default function ClientInvoicing() {
       <Section>
         <Row>
           <Col col={4}>
-            <Input className="inputField" placeholder="Pesquisar Nome" prefix={<SearchOutlined />} onChange={onChange} allowClear style={{ borderRadius: '15px' }} />
+            <Input
+              className="filterByText"
+              placeholder="Pesquisar Nome"
+              prefix={<SearchOutlined />}
+              onChange={({ target: { value } }) => {
+                const text = value && value.length > 0 ? value : null;
+                setFilterByText(text);
+              }}
+              allowClear
+              style={{ borderRadius: '15px' }}
+            />
           </Col>
         </Row>
         {loading && <h1>Carregando...</h1>}
       </Section>
-      <Table columns={reportTableColumns} dataSource={data} size="middle" />
+      <Table columns={reportTableColumns} dataSource={data} size="middle" scroll={{ x: 'max-content' }} />
     </Container>
   );
 }

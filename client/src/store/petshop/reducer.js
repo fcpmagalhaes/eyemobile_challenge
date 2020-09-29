@@ -11,6 +11,7 @@ export default function petshop(state = INITIAL_STATE, action) {
     case Types.LOAD:
       return {
         ...state,
+        data: [],
         loading: true,
       };
 

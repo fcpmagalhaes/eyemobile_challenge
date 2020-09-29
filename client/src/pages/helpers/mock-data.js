@@ -180,7 +180,7 @@ export const customers = [
   },
   {
     id: 54879,
-    name: 'Lorem Lipsun',
+    name: 'Felipe Magalhães',
     document: '21380512000',
     birthdate: '18/06/1995',
     customer_since: '30/09/2019',
@@ -188,7 +188,7 @@ export const customers = [
   },
   {
     id: 54880,
-    name: 'Lorem Lipsun',
+    name: 'Eyemobile',
     document: '96295342078',
     birthdate: '12/05/1990',
     customer_since: '30/09/2019',
@@ -204,7 +204,7 @@ export const customers = [
   },
   {
     id: 54882,
-    name: 'Lorem Lipsun',
+    name: 'Felipe Magalhães',
     document: '22169125060',
     birthdate: '30/09/1995',
     customer_since: '30/09/2019',
@@ -228,7 +228,7 @@ export const customers = [
   },
   {
     id: 54885,
-    name: 'Lorem Lipsun',
+    name: 'Eyemobile',
     document: '92840743043',
     birthdate: '28/11/1990',
     customer_since: '30/09/2019',
@@ -236,7 +236,7 @@ export const customers = [
   },
   {
     id: 54886,
-    name: 'Lorem Lipsun',
+    name: 'Eyemobile',
     document: '41811506070',
     birthdate: '08/06/1967',
     customer_since: '30/09/2019',
@@ -244,7 +244,7 @@ export const customers = [
   },
   {
     id: 54887,
-    name: 'Lorem Lipsun',
+    name: 'Felipe Magalhães',
     document: '78376198033',
     birthdate: '12/11/1965',
     customer_since: '30/09/2019',

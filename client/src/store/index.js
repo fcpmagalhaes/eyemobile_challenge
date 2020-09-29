@@ -2,11 +2,10 @@ import { combineReducers, createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './sagas';
 
-import petshopReducer from './petshop/reducer';
-
+import petshop from './petshop/reducer';
 
 const reducers = combineReducers({
-  petshopReducer
+  petshop,
 });
 
 const sagaMiddleware = createSagaMiddleware();

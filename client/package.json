@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@flasd/focus-fix": "^1.0.1",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
@@ -19,7 +20,7 @@
     "redux": "^4.0.5",
     "redux-saga": "^1.1.3",
     "styled-bootstrap-grid": "^3.1.0",
-    "styled-components": "^5.2.0",
+    "styled-components": "5.0.1",
     "styled-nanoreset": "^1.0.1",
     "yup": "^0.29.3"
   },

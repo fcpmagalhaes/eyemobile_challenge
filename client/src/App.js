@@ -1,30 +1,23 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { Helmet } from 'react-helmet';
-import { Provider as ReduxProvider } from 'react-redux';
-import { CookiesProvider } from 'react-cookie';
-
-import Routes from './routes';
-import store from './store';
-import Layout from './components/Layout';
+import {
+  BrowserRouter as Router, Redirect, Route, Switch,
+} from 'react-router-dom';
+import Petshop from './pages/Petshop';
+import Invoicing from './pages/Invoicing';
+import Totals from './pages/Filters/Totals';
+import ClientInvoicing from './pages/Filters/ClientInvoicing';
 
 function App() {
   return (
-    <CookiesProvider>
-      <ReduxProvider store={store}>
-        <>
-          <Helmet>
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Lato"
-            />
-          </Helmet>
-          <Layout>
-            <Routes />
-          </Layout>
-        </>
-      </ReduxProvider>
-    </CookiesProvider>
+    <Router>
+      <Invoicing>
+        <Switch>
+          <Route path="/totais" exact component={Totals} />
+          <Route path="/clientes" exact component={ClientInvoicing} />
+        </Switch>
+      </Invoicing>
+    </Router>
   );
 }
 

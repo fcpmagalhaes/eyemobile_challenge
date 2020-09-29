@@ -6,12 +6,9 @@ export const Types = {
 
 // Action Creators
 export const Creators = {
-  // loadReport: (paginationParams, filterParams) => {
-  //   return {
-  //     type: Types.LOAD,
-  //     loading: true,
-  //     paginationParams,
-  //     filterParams,
-  //   };
-  // },
+  loadClients: (filterParams) => ({
+    type: Types.LOAD,
+    loading: true,
+    filterParams,
+  }),
 };

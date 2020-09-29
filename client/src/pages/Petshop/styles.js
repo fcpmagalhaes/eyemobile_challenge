@@ -9,6 +9,20 @@ export default styled.div`
     svg {
       display: block;
       margin: 0 auto;
-    }
+    }  
 }
+.site-layout .site-layout-background {
+  background: #fff;
+}
+  [data-theme="ligth"] .site-layout .site-layout-background {
+    background: red;
+  }
+
+  .ant-menu-vertical > .ant-menu-item, .ant-menu-vertical-left > .ant-menu-item, .ant-menu-vertical-right > .ant-menu-item, .ant-menu-inline > .ant-menu-item, .ant-menu-vertical > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-left > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-vertical-right > .ant-menu-submenu > .ant-menu-submenu-title, .ant-menu-inline > .ant-menu-submenu > .ant-menu-submenu-title {
+    height: 100px;
+    span {
+      display: block;
+      margin: 0 auto;
+    }
+  }
 `;

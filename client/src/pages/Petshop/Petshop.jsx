@@ -1,60 +1,59 @@
 /* eslint-disable import/no-unresolved */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
-import './index.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
+import { Link } from 'react-router-dom';
 import StylesContainer from './styles';
 import { ReactComponent as Logo } from '../../assets/ic_logo.svg';
 import { ReactComponent as Register } from '../../assets/ic_cadastro.svg';
-import { ReactComponent as Invoicing } from '../../assets/ic_dashboard.svg';
+import { ReactComponent as InvoicingIcon } from '../../assets/ic_dashboard.svg';
 
-const {
-  Header, Content, Footer, Sider,
-} = Layout;
-
-export default function Petshop() {
-  const [state, setState] = useState({
-    collapsed: false,
-  });
-
-  const onCollapse = (collapsed) => {
-    setState({ collapsed });
-  };
+export default function Petshop(props) {
+  const {
+    Header, Content, Sider,
+  } = Layout;
+  useEffect(() => {
+    console.log('NovaProps', props);
+  }, [props]);
+  const { children } = props;
 
   return (
     <StylesContainer>
       <Layout style={{ minHeight: '100vh' }}>
-        <Sider collapsible collapsed={state.collapsed} onCollapse={onCollapse}>
+        <Sider theme="dark">
           <div className="logo">
             <Logo />
           </div>
-          <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
-            <Menu.Item key="1">
-              <Invoicing />
-              Meu Faturamento
+          <Menu defaultSelectedKeys={['1']} mode="inline">
+            <Menu.Item key="1" icon={<InvoicingIcon />}>
+              <Link to="/faturamento">
+                Meu Faturamento
+              </Link>
             </Menu.Item>
-            <Menu.Item key="2">
-              <Register />
-              Cadastro
-            </Menu.Item>
+            <Menu.Item key="2" icon={<Register />} disabled> Cadastro </Menu.Item>
           </Menu>
         </Sider>
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }} />
-          <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0' }}>
-              <Breadcrumb.Item>User</Breadcrumb.Item>
-              <Breadcrumb.Item>Bill</Breadcrumb.Item>
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            <Breadcrumb style={{ margin: '16px 0 0 16px' }}>
+              <Breadcrumb.Item>Petshop</Breadcrumb.Item>
+              <Breadcrumb.Item>Meu Faturamento</Breadcrumb.Item>
             </Breadcrumb>
-            <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
-              Bill is a cat.
-            </div>
+          </Header>
+          <Content>
+            { children }
           </Content>
-          <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
         </Layout>
       </Layout>
-
     </StylesContainer>
-
   );
 }
+
+Petshop.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.node])),
+  ]).isRequired,
+};

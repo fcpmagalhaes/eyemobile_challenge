@@ -1,7 +1,9 @@
 /* eslint-disable no-return-assign */
 /* eslint-disable import/prefer-default-export */
 import { takeLatest, put, call } from 'redux-saga/effects';
-import { compareAsc, parseISO, isToday } from 'date-fns';
+import {
+  compareAsc, parseISO, isToday, isThisWeek,
+} from 'date-fns';
 import { Types } from './actions';
 import { customers, transactions } from '../../pages/Helpers/mock-data';
 
@@ -43,6 +45,9 @@ function rangeDelimitation(data, values) {
   if (values.typeRange === 'today') {
     return data.filter((d) => isToday(parseISO(d.time)));
   }
+  if (values.typeRange === 'lastWeek') {
+    return data.filter((d) => isThisWeek(parseISO(d.time)));
+  }
   return data;
 }
 
@@ -57,7 +62,7 @@ function calculateValues(data) {
       medication: 0,
     },
   };
-  // console.log('data', data);
+  console.log('data', data);
   data.map((d) => {
     if (d.type === 'Despesas') {
       totalData.expense += d.amount;

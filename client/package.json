@@ -11,6 +11,7 @@
     "add": "^2.0.6",
     "antd": "^4.6.6",
     "chart.js": "^2.9.3",
+    "date-fns": "^2.16.1",
     "formik": "^2.1.5",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",

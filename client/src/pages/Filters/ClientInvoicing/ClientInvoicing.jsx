@@ -73,6 +73,7 @@ export default function ClientInvoicing() {
     <Container>
       <Header>
         <h1>Filtro por Clientes</h1>
+        {loading && <h3>Carregando...</h3>}
       </Header>
       <Section>
         <Row>
@@ -90,7 +91,7 @@ export default function ClientInvoicing() {
             />
           </Col>
         </Row>
-        {loading && <h1>Carregando...</h1>}
+
       </Section>
       <Table columns={reportTableColumns} dataSource={data} size="middle" scroll={{ x: 'max-content' }} />
     </Container>

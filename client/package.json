@@ -8,11 +8,14 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "add": "^2.0.6",
     "antd": "^4.6.6",
+    "chart.js": "^2.9.3",
     "formik": "^2.1.5",
     "lodash.debounce": "^4.0.8",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
+    "react-chartjs-2": "^2.10.0",
     "react-cookie": "^4.0.3",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
@@ -24,6 +27,7 @@
     "styled-bootstrap-grid": "^3.1.0",
     "styled-components": "5.0.1",
     "styled-nanoreset": "^1.0.1",
+    "yarn": "^1.22.10",
     "yup": "^0.29.3"
   },
   "scripts": {

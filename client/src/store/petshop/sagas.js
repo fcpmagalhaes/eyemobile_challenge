@@ -5,7 +5,7 @@ import {
   parseISO, isToday, isThisWeek, isThisMonth,
 } from 'date-fns';
 import { Types } from './actions';
-import { customers, transactions } from '../../pages/Helpers/mock-data';
+import { customers, transactions } from '../../pages/helpers/mock-data';
 
 async function apiGetClient(values) {
   if (values.filterParams) {

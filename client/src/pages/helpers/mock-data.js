@@ -21,7 +21,7 @@ export const transactions = [
     type: 'Receitas',
     product_id: 26,
     product_name: 'Banho & Tosa',
-    time: '2019-07-26 10:12:40.000000',
+    time: '2020-09-02T00:00:00-03:00',
   },
   {
     id: 4515,

@@ -6,7 +6,7 @@ This project contains the following modules:
  - api (Node.js)
     A system that simulate the management of credit card transactions. Create users with diferent access level, implement JWT authentication and use ExpressJS.
  - client (ReactJS)
-    A system that simulates the internal system of a petshop. All the data are mocked for while. Its possible, list and filter clients, show graphics with financial statements. Anti Design frameworks was used in some UI components, ChartJS to provide graphs, and Redux Sagas to management our state.
+    A system that simulates the internal manager of a petshop. All the data are mocked for a while. Its possible, list and filter clients, show graphics with financial statements. Anti Design frameworks was used in some UI components, ChartJS to provide graphs, and Redux Sagas to management our state.
 
 
 ### ⚙ API Instalation

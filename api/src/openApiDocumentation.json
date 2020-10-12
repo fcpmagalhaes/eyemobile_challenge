@@ -13,6 +13,9 @@
   ],
   "tags": [
     {
+      "name": "Api Running"
+    },
+    {
       "name": "Users"
     },
     {
@@ -29,6 +32,26 @@
     }
   ],
   "paths": {
+    "/": {
+      "get": {
+        "tags": ["Api Running"],
+        "description": "Show message if application is running",
+        "operationId": "ApiRunning",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Running"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/users": {
       "post": {
         "tags": ["Users"],
@@ -161,10 +184,96 @@
           }
         }
       }
-    }  
+    },
+    "/transactions": {
+      "post": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Transactions"],
+        "description": "Create new transaction",
+        "operationId": "postTransaction",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Transaction"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TransactionCreated"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Transactions"],
+        "description": "List of all transactions registered",
+        "operationId": "TransactionList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrayList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/transactions/balancer": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Transactions"],
+        "description": "Balancer of transactions, values avaliable and to receive",
+        "operationId": "getBalancer",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Balancer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "components": {
     "schemas": {
+      "Running": {
+        "type": "string"
+      },
       "User": {
         "type": "object",
         "properties": {
@@ -201,6 +310,53 @@
           },
           "token": {
             "type": "string"
+          }
+        }
+      },
+      "TransactionCreated": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Transaction": {
+        "type": "object",
+        "properties": {
+          "nsu": {
+            "type": "string",
+            "example": "04521223191"
+          },
+          "value": {
+            "type": "number",
+            "example": 25.72112383910
+          },
+          "flag_name": {
+            "type": "string",
+            "example": "VISA"
+          },
+          "modality_type": {
+            "type": "string",
+            "example": "credit"
+          },
+          "date": {
+            "type": "string",
+            "example": "2020-09-28T23:18:40-03:00"
+          }
+        }
+      },
+      "Balancer": {
+        "type": "object",
+        "properties": {
+          "avaliable": {
+            "type": "number"
+          },
+          "toReceive": {
+            "type": "number"
           }
         }
       }

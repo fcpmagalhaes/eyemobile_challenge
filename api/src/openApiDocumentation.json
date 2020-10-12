@@ -28,11 +28,6 @@
       "name": "Modalities"
     }
   ],
-  "security": [
-    {
-      "bearerAuth": []
-    }
-  ],
   "paths": {
     "/users": {
       "post": {
@@ -64,9 +59,14 @@
         }
       },
       "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
         "tags": ["Users"],
-        "description": "List users",
-        "operationId": "listUsers",
+        "description": "List of registered users",
+        "operationId": "UsersList",
         "parameters": [],
         "responses": {
           "200": {
@@ -74,14 +74,94 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/UsersList"
+                  "$ref": "#/components/schemas/ArrayList"
                 }
               }
             }
           }
         }
       }
-    }
+    },
+    "/sessions": {
+      "post": {
+        "tags": ["Sessions"],
+        "description": "Create user session",
+        "operationId": "postSession",
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SessionCreated"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/flags": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Flags"],
+        "description": "List of flags used on credit cards",
+        "operationId": "FlagsList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrayList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/modalities": {
+      "get": {
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "tags": ["Modalities"],
+        "description": "List of modalities used on transactions",
+        "operationId": "ModalitiesList",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ArrayList"
+                }
+              }
+            }
+          }
+        }
+      }
+    }  
   },
   "components": {
     "schemas": {
@@ -90,11 +170,11 @@
         "properties": {
           "login": {
             "type": "string",
-            "example": "test_user"
+            "example": "portal"
           },
           "password": {
             "type": "string",
-            "example": "testpw"
+            "example": "123456"
           }
         }
       },
@@ -109,9 +189,20 @@
           }
         }
       },
-      "UsersList": {
+      "ArrayList": {
         "type": "array",
         "example": []
+      },
+      "SessionCreated": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "token": {
+            "type": "string"
+          }
+        }
       }
     },
     "securitySchemes": {
